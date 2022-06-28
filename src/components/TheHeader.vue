@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import {UserInput} from "../store.js";
+import {state} from "../store.js";
 export default {
   name: "TheHeader",
   components: {},
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
    pushInput() {
-     UserInput = this.UserSearch;
+     state.UserInput = this.UserSearch;
    },
   }
 };
