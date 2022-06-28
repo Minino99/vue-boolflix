@@ -32,7 +32,7 @@ export default {
     filterFilms() {
         axios
           .get(
-            `https://api.themoviedb.org/3/search/movie?api_key=1fc772f6f07f1b259cdb59ee1f2e79fb&query=${this.UserSearch}`
+            `https://api.themoviedb.org/3/search/movie?api_key=1fc772f6f07f1b259cdb59ee1f2e79fb&query=${this.UserSearch}&language=it-IT&page=1`
           )
           .then((response) => {
             state.films = response.data.results;
@@ -43,7 +43,7 @@ export default {
   mounted(){
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=1fc772f6f07f1b259cdb59ee1f2e79fb`
+        `https://api.themoviedb.org/3/movie/popular?api_key=1fc772f6f07f1b259cdb59ee1f2e79fb&language=it-IT&page=1`
       )
       .then((response) => {
         state.films = response.data.results;
