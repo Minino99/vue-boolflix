@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       filmList: [],
-      UserSearch: "El Camino",
+      UserSearch: "Kill Bill",
     };
   },
   methods: {

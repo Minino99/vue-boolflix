@@ -12,6 +12,7 @@
         <button
           class="btn btn-danger"
           type="button"
+          @click="pushInput"
         >
           Cerca
         </button>
@@ -21,6 +22,7 @@
 </template>
 
 <script>
+import {UserInput} from "../store.js";
 export default {
   name: "TheHeader",
   components: {},
@@ -29,6 +31,11 @@ export default {
      UserSearch: "",
     };
   },
+  methods: {
+   pushInput() {
+     UserInput = this.UserSearch;
+   },
+  }
 };
 </script>
 
