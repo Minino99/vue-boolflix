@@ -1,13 +1,14 @@
 <template>
   <div class="headercontainer">
     <div class="container p-3 d-flex justify-content-between gap-5 h-100">
-      <div class="h-100"><img src="../../public/img/logo.png" class="h-100" alt="" srcset=""></div>
+      <div class="h-100"><a href=""><img src="../../public/img/logo.png" class="h-100" alt="" srcset=""></a></div>
       <div class="input-group">
         <input
           type="text"
           class="form-control"
           placeholder="Inserisci il nome del film"
           v-model="UserSearch"
+          @keyup.enter="filterFilms"
         />
         <button class="btn btn-danger" type="button" @click="filterFilms">
           Cerca
