@@ -40,6 +40,16 @@ export default {
           });
     },
   },
+  mounted(){
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/popular?api_key=1fc772f6f07f1b259cdb59ee1f2e79fb`
+      )
+      .then((response) => {
+        state.films = response.data.results;
+        console.log(state.films);
+      });
+  }
 };
 </script>
 

@@ -26,23 +26,20 @@
 </template>
 
 <script>
-import { state } from '@/store';
+import { state } from "@/store";
 
 export default {
   name: "FilmSearchResult",
   components: {},
   data() {
-    return {
-    }
+    return {};
   },
-
-      computed:{
-       filterFilms(){
-        return state.films
-       }
-      }
-  };
-
+  computed: {
+    filterFilms() {
+      return state.films;
+    },
+  },
+};
 </script>
 
 <style lang="scss">
