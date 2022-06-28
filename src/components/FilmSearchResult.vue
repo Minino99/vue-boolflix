@@ -3,7 +3,7 @@
     <div
       class="card"
       style="width: 18rem"
-      v-for="film in filmList"
+      v-for="film in filterFilms"
       :key="film.id"
     >
       <img
@@ -26,36 +26,23 @@
 </template>
 
 <script>
-import axios from "axios";
-import { state } from "../store.js";
+import { state } from '@/store';
+
 export default {
   name: "FilmSearchResult",
   components: {},
   data() {
     return {
-      filmList: [],
-    };
+    }
   },
-  methods: {
-   noSearch() {
-    axios.get("https://api.themoviedb.org/3/movie/popular?api_key=1fc772f6f07f1b259cdb59ee1f2e79fb").then(response => {
-      this.filmList = response.data.results;
-    });
-   },
-  },
-  computed: {
-    getFilmList() {
-     if (state.UserInput === "") {
-      this.noSearch();
-     }else{
-      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=1fc772f6f07f1b259cdb59ee1f2e79fb&query=${state.UserInput}`).then(response => {
-        this.filmList = response.data.results;
-      });
-     }
-     return this.filmList
-    },
-  },
-};
+
+      computed:{
+       filterFilms(){
+        return state.films
+       }
+      }
+  };
+
 </script>
 
 <style lang="scss">
