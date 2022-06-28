@@ -1,7 +1,7 @@
 <template>
   <div class="headercontainer">
-    <div class="container p-3 d-flex justify-content-between">
-      <div><h1 class="color-danger">BOOLFLIX</h1></div>
+    <div class="container p-3 d-flex justify-content-between gap-5 h-100">
+      <div class="h-100"><img src="../../public/img/logo.png" class="h-100" alt="" srcset=""></div>
       <div class="input-group">
         <input
           type="text"
@@ -57,6 +57,7 @@ export default {
 .headercontainer {
   background-color: #3e333f;
   color: #fc4442;
+  height: 88px;
 }
 
 .input-group {
