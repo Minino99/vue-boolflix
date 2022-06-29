@@ -12,7 +12,9 @@
         alt="Film Poster"
       />
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><h5 class="card-title">{{ film.title }}</h5></li>
+        <li class="list-group-item">
+          <h5 class="card-title">{{ film.title }}</h5>
+        </li>
         <li class="list-group-item">
           <span class="card-text text-muted">
             {{ film.original_title }}
@@ -26,6 +28,36 @@
           />
         </li>
         <li class="list-group-item">IMDb: {{ film.vote_average }}</li>
+      </ul>
+    </div>
+    <div
+      class="card"
+      style="width: 18rem"
+      v-for="serie in filterTvSeries"
+      :key="serie.id"
+    >
+      <img
+        :src="`https://image.tmdb.org/t/p/original/${serie.poster_path}`"
+        class="card-img-top"
+        alt="Film Poster"
+      />
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h5 class="card-title">{{ serie.name }}</h5>
+        </li>
+        <li class="list-group-item">
+          <span class="card-text text-muted">
+            {{ serie.original_name }}
+          </span>
+        </li>
+        <li class="list-group-item">
+          <img
+            :src="`https://unpkg.com/language-icons/icons/${serie.original_language}.svg`"
+            :alt="serie.original_language"
+            srcset=""
+          />
+        </li>
+        <li class="list-group-item">IMDb: {{ serie.vote_average }}</li>
       </ul>
     </div>
   </div>
@@ -44,6 +76,9 @@ export default {
     filterFilms() {
       return state.films;
     },
+    filterTvSeries() {
+      return state.tvSeries;
+    },
   },
 };
 </script>
@@ -55,6 +90,7 @@ export default {
   background-color: #eeebdd !important;
   position: relative;
   cursor: pointer;
+  height: fit-content;
 }
 
 .list-group-item {
