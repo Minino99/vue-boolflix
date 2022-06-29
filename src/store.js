@@ -4,4 +4,5 @@ export const state = Vue.observable({
 UserInput: '',
 films: [],
 tvSeries: [],
+result: [],
 });

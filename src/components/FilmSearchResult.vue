@@ -7,7 +7,7 @@
       :key="film.id"
     >
       <img
-        :src="`https://image.tmdb.org/t/p/original/${film.poster_path}`"
+        :src="`https://image.tmdb.org/t/p/w342/${film.poster_path}`"
         class="card-img-top"
         alt="Film Poster"
       />
@@ -27,7 +27,7 @@
             srcset=""
           />
         </li>
-        <li class="list-group-item">IMDb: {{ film.vote_average }}</li>
+        <li class="list-group-item">{{ getStars(film.vote_average) }}</li>
       </ul>
     </div>
     <div
@@ -37,7 +37,7 @@
       :key="serie.id"
     >
       <img
-        :src="`https://image.tmdb.org/t/p/original/${serie.poster_path}`"
+        :src="`https://image.tmdb.org/t/p/w342/${serie.poster_path}`"
         class="card-img-top"
         alt="Film Poster"
       />
@@ -57,7 +57,7 @@
             srcset=""
           />
         </li>
-        <li class="list-group-item">IMDb: {{ serie.vote_average }}</li>
+        <li class="list-group-item">{{ getStars(serie.vote_average) }}</li>
       </ul>
     </div>
   </div>
@@ -72,6 +72,13 @@ export default {
   data() {
     return {};
   },
+  methods: {
+    getStars(vote){
+      vote = Math.round(vote /2);
+      return (`⭐`).repeat(vote);
+    }
+  },
+
   computed: {
     filterFilms() {
       return state.films;

@@ -58,7 +58,6 @@ export default {
       )
       .then((response) => {
         state.films = response.data.results;
-        console.log(state.films);
       });
   },
 };
