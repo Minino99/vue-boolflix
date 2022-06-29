@@ -11,14 +11,20 @@
         class="card-img-top"
         alt="Film Poster"
       />
-      <div class="card-body">
-        <h5 class="card-title">{{ film.title }}</h5>
-        <span class="card-text text-muted">
-          {{ film.original_title }}
-        </span>
-      </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><img :src="`https://unpkg.com/language-icons/icons/${film.original_language}.svg`" :alt="film.original_language" srcset=""></li>
+        <li class="list-group-item"><h5 class="card-title">{{ film.title }}</h5></li>
+        <li class="list-group-item">
+          <span class="card-text text-muted">
+            {{ film.original_title }}
+          </span>
+        </li>
+        <li class="list-group-item">
+          <img
+            :src="`https://unpkg.com/language-icons/icons/${film.original_language}.svg`"
+            :alt="film.original_language"
+            srcset=""
+          />
+        </li>
         <li class="list-group-item">IMDb: {{ film.vote_average }}</li>
       </ul>
     </div>
@@ -44,18 +50,32 @@ export default {
 
 <style lang="scss">
 .card {
-  color: #1B1717;
-  border: 3px solid #EEEBDD !important;
-  background-color: #EEEBDD !important;
+  color: #1b1717;
+  border: 3px solid #eeebdd !important;
+  background-color: #eeebdd !important;
+  position: relative;
+  cursor: pointer;
+}
 
-  .list-group-item {
-    color: #1B1717 !important;
-    background-color: #EEEBDD !important;
-    img{
-      width: 30px;
-      border-radius: 50%;
-    }
+.list-group-item {
+  color: #1b1717 !important;
+  background-color: #eeebdd !important;
+  img {
+    width: 30px;
+    border-radius: 50%;
   }
+}
+
+.list-group {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card:hover .list-group {
+  opacity: 0.9;
 }
 
 .text-muted {

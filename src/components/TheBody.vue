@@ -1,6 +1,6 @@
 <template>
   <div class="container py-5 overflow-auto">
-      <FilmSearchResult />
+    <FilmSearchResult />
   </div>
 </template>
 
@@ -17,6 +17,11 @@ export default {
 <style>
 .container {
   height: calc(100vh - 88px);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
+.container::-webkit-scrollbar {
+  display: none;
+}
 </style>
