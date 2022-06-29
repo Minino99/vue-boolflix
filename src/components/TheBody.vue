@@ -16,7 +16,7 @@ export default {
 
 <style>
 .container {
-  height: 90%;
+  height: calc(100vh - 88px);
 }
 
 </style>

@@ -56,7 +56,7 @@ export default {
 
 <style lang="scss" scoped>
 .headercontainer {
-  background-color: #3e333f;
+  background-color: #EEEBDD;
   color: #fc4442;
   height: 88px;
 }

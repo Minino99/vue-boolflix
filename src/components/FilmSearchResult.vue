@@ -18,7 +18,7 @@
         </span>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{ film.original_language }}</li>
+        <li class="list-group-item"><img :src="`https://unpkg.com/language-icons/icons/${film.original_language}.svg`" :alt="film.original_language" srcset=""></li>
         <li class="list-group-item">IMDb: {{ film.vote_average }}</li>
       </ul>
     </div>
@@ -44,8 +44,17 @@ export default {
 
 <style lang="scss">
 .card {
-  h5 {
-    color: #f0ce35;
+  color: #1B1717;
+  border: 3px solid #EEEBDD !important;
+  background-color: #EEEBDD !important;
+
+  .list-group-item {
+    color: #1B1717 !important;
+    background-color: #EEEBDD !important;
+    img{
+      width: 30px;
+      border-radius: 50%;
+    }
   }
 }
 
