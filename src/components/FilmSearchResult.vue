@@ -27,7 +27,7 @@
             srcset=""
           />
         </li>
-        <li class="list-group-item">{{ getStars(film.vote_average) }}</li>
+        <li class="list-group-item"><i class="fa-solid fa-star" v-for="index in getStars(film.vote_average)" :key="index" ></i></li>
       </ul>
     </div>
     <div
@@ -57,7 +57,7 @@
             srcset=""
           />
         </li>
-        <li class="list-group-item">{{ getStars(serie.vote_average) }}</li>
+        <li class="list-group-item"><i class="fa-solid fa-star" v-for="index in getStars(serie.vote_average)" :key="index" ></i></li>
       </ul>
     </div>
   </div>
@@ -75,7 +75,7 @@ export default {
   methods: {
     getStars(vote){
       vote = Math.round(vote /2);
-      return (`⭐`).repeat(vote);
+      return vote;
     }
   },
 
@@ -91,6 +91,13 @@ export default {
 </script>
 
 <style lang="scss">
+.fa-star{
+  color: #CE1212;
+  padding-right: 5px;
+  
+}
+
+
 .card {
   color: #1b1717;
   border: 3px solid #eeebdd !important;

@@ -18,6 +18,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
 #app{
   height: 100vh;
   background-color: #810000;
