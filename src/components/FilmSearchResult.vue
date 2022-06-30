@@ -7,7 +7,7 @@
       :key="film.id"
     >
       <img
-        :src="`https://image.tmdb.org/t/p/w342/${film.poster_path}`"
+        :src="posterPlaceholder(film.poster_path)"
         class="card-img-top"
         alt="Film Poster"
       />
@@ -27,7 +27,18 @@
             srcset=""
           />
         </li>
-        <li class="list-group-item"><i class="fa-solid fa-star" v-for="index in getStars(film.vote_average)" :key="index" ></i></li>
+        <li class="list-group-item">
+          <i
+            class="fa-solid fa-star"
+            v-for="index in getStars(film.vote_average)"
+            :key="`stellapienafilm${index}`"
+          ></i>
+                    <i
+            class="fa-regular fa-star"
+            v-for="index in emptyStars(film.vote_average)"
+            :key="`stellavuotafilm${index}`"
+          ></i>
+        </li>
       </ul>
     </div>
     <div
@@ -37,9 +48,9 @@
       :key="serie.id"
     >
       <img
-        :src="`https://image.tmdb.org/t/p/w342/${serie.poster_path}`"
+        :src="posterPlaceholder(serie.poster_path)"
         class="card-img-top"
-        alt="Film Poster"
+        alt="Serie Poster"
       />
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
@@ -57,7 +68,18 @@
             srcset=""
           />
         </li>
-        <li class="list-group-item"><i class="fa-solid fa-star" v-for="index in getStars(serie.vote_average)" :key="index" ></i></li>
+        <li class="list-group-item">
+          <i
+            class="fa-solid fa-star"
+            v-for="index in getStars(serie.vote_average)"
+            :key="`stellapienaserie${index}`"
+          ></i>
+          <i
+            class="fa-regular fa-star"
+            v-for="index in emptyStars(serie.vote_average)"
+            :key="`stellavuotaserie${index}`"
+          ></i>
+        </li>
       </ul>
     </div>
   </div>
@@ -73,10 +95,21 @@ export default {
     return {};
   },
   methods: {
-    getStars(vote){
-      vote = Math.round(vote /2);
+    posterPlaceholder(poster){
+      if (`https://image.tmdb.org/t/p/w342/${poster}` !== "https://image.tmdb.org/t/p/w342/null") {
+        return `https://image.tmdb.org/t/p/w342/${poster}`;
+      } else {
+        return "/img/imgError.png";
+      }
+    },
+    getStars(vote) {
+      vote = Math.round(vote / 2);
       return vote;
-    }
+    },
+    emptyStars(vote) {
+      vote = Math.round(vote / 2);
+      return 5 - vote;
+    },
   },
 
   computed: {
@@ -91,12 +124,10 @@ export default {
 </script>
 
 <style lang="scss">
-.fa-star{
-  color: #CE1212;
+.fa-star {
+  color: #ce1212;
   padding-right: 5px;
-  
 }
-
 
 .card {
   color: #1b1717;
