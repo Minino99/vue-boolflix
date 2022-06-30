@@ -45,7 +45,16 @@
             v-for="genre in film.genre_ids"
             :key="`serietv-id${genre}`"
           >
-            {{ getGenre(genre) }}
+            {{ `${getGenre(genre)},` }}
+          </span>
+        </li>
+        <li class="list-group-item">
+          <span
+            class="card-text text-muted"
+            v-for="index in 5"
+            :key="`actor-id-${index}`"
+          >
+            {{ getActors(film.id, index) }}
           </span>
         </li>
       </ul>
@@ -98,6 +107,15 @@
             {{ getGenre(genre) }}
           </span>
         </li>
+        <li class="list-group-item">
+          <span
+            class="card-text text-muted"
+            v-for="index in 5"
+            :key="`actor-id-${index}`"
+          >
+            {{ getActorsTv(serie.id, index) }}
+          </span>
+        </li>
       </ul>
     </div>
   </div>
@@ -105,6 +123,7 @@
 
 <script>
 import { state } from "@/store";
+import axios from "axios";
 
 export default {
   name: "FilmSearchResult",
@@ -137,6 +156,24 @@ export default {
           return state.genres[i].name;
         }
       }
+    },
+    getActorsTv(id, i) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/tv/${id}/credits?api_key=1fc772f6f07f1b259cdb59ee1f2e79fb&language=it-IT`
+        )
+        .then((response) => {
+          return response.data.cast[i].name;
+        });
+    },
+    getActors(id, i) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/${id}/credits?api_key=1fc772f6f07f1b259cdb59ee1f2e79fb&language=it-IT`
+        )
+        .then((response) => {
+          return response.data.cast[i].name;
+        });
     },
   },
 
