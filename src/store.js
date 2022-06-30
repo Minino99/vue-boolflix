@@ -5,4 +5,5 @@ UserInput: '',
 films: [],
 tvSeries: [],
 result: [],
+genres: [],
 });

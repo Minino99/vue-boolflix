@@ -33,11 +33,20 @@
             v-for="index in getStars(film.vote_average)"
             :key="`stellapienafilm${index}`"
           ></i>
-                    <i
+          <i
             class="fa-regular fa-star"
             v-for="index in emptyStars(film.vote_average)"
             :key="`stellavuotafilm${index}`"
           ></i>
+        </li>
+        <li class="list-group-item">
+          <span
+            class="card-text text-muted"
+            v-for="genre in film.genre_ids"
+            :key="`serietv-id${genre}`"
+          >
+            {{ getGenre(genre) }}
+          </span>
         </li>
       </ul>
     </div>
@@ -80,6 +89,15 @@
             :key="`stellavuotaserie${index}`"
           ></i>
         </li>
+        <li class="list-group-item">
+          <span
+            class="card-text text-muted"
+            v-for="genre in serie.genre_ids"
+            :key="`serietv-id${genre}`"
+          >
+            {{ getGenre(genre) }}
+          </span>
+        </li>
       </ul>
     </div>
   </div>
@@ -95,8 +113,11 @@ export default {
     return {};
   },
   methods: {
-    posterPlaceholder(poster){
-      if (`https://image.tmdb.org/t/p/w342/${poster}` !== "https://image.tmdb.org/t/p/w342/null") {
+    posterPlaceholder(poster) {
+      if (
+        `https://image.tmdb.org/t/p/w342/${poster}` !==
+        "https://image.tmdb.org/t/p/w342/null"
+      ) {
         return `https://image.tmdb.org/t/p/w342/${poster}`;
       } else {
         return "/img/imgError.png";
@@ -109,6 +130,13 @@ export default {
     emptyStars(vote) {
       vote = Math.round(vote / 2);
       return 5 - vote;
+    },
+    getGenre(input) {
+      for (let i = 0; i < state.genres.length; i++) {
+        if (state.genres[i].id === input) {
+          return state.genres[i].name;
+        }
+      }
     },
   },
 
